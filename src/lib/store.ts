@@ -13,6 +13,9 @@ export interface Submission {
   mock?: boolean;
   status: "pending_review" | "approved" | "adjusted";
   createdAt: string;
+  reviewerScore?: number;
+  reviewerName?: string;
+  token?: string;
 }
 
 const KEY = "proofpath:submissions";
@@ -36,6 +39,20 @@ export function saveSubmission(s: Submission) {
 export function resetSubmissions() {
   try {
     localStorage.removeItem(KEY);
+  } catch {}
+}
+
+export function getName(key: "candidate" | "reviewer", fallback: string) {
+  try {
+    return localStorage.getItem(`proofpath:${key}`) || fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+export function setName(key: "candidate" | "reviewer", value: string) {
+  try {
+    localStorage.setItem(`proofpath:${key}`, value);
   } catch {}
 }
 
