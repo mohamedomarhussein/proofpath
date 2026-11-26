@@ -18,6 +18,30 @@ const RULES: { cat: Cat; skill: string; words: string[] }[] = [
   { cat: "writing", skill: "Writing and content", words: ["writ", "journalis", "editor", "blog", "content", "copy"] },
 ];
 
+// Typo-tolerant matching: small edit distance against the start of each word.
+function dist(a: string, b: string) {
+  const dp = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)]);
+  for (let j = 1; j <= b.length; j++) dp[0][j] = j;
+  for (let i = 1; i <= a.length; i++)
+    for (let j = 1; j <= b.length; j++)
+      dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+  return dp[a.length][b.length];
+}
+
+function fuzzyHas(lower: string, word: string) {
+  const w = word.trim();
+  if (lower.includes(w)) return true;
+  if (w.includes(" ") || w.length < 4) return false; // phrases and tiny words must match exactly
+  const allowed = w.length >= 7 ? 2 : 1;
+  const tokens = lower.split(/[^a-z\u0600-\u06ff]+/).filter((t) => t.length >= 3);
+  return tokens.some((t) => {
+    for (let L = Math.max(3, w.length - 1); L <= w.length + 1; L++) {
+      if (dist(t.slice(0, L), w) <= allowed) return true;
+    }
+    return false;
+  });
+}
+
 function mockExtract(text: string): ExtractResult {
   const lower = text.toLowerCase();
   const sentences = text.split(/[.!?\n]+/).map((s) => s.trim()).filter(Boolean);
@@ -25,7 +49,7 @@ function mockExtract(text: string): ExtractResult {
   const level = years >= 5 ? "advanced" : years >= 2 ? "intermediate" : /many|senior|experienc|expert/.test(lower) ? "intermediate" : "beginner";
 
   const found = RULES.map((r) => {
-    const hit = r.words.find((w) => lower.includes(w));
+    const hit = r.words.find((w) => fuzzyHas(lower, w));
     if (!hit) return null;
     const evidence = (sentences.find((s) => s.toLowerCase().includes(hit)) || text).slice(0, 120);
     return { rule: r, evidence };
