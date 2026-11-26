@@ -10,6 +10,7 @@ const LINKS = [
   { href: "/ledger", label: "4 Ledger" },
   { href: "/wallet", label: "5 Wallet" },
   { href: "/hire", label: "6 Hire" },
+  { href: "/employer", label: "7 Employer" },
 ];
 
 export default function Nav() {
