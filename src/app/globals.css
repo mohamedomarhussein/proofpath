@@ -34,3 +34,99 @@ body {
 .pp-delay-2 { animation-delay: 0.2s; }
 .pp-delay-3 { animation-delay: 0.3s; }
 @media (prefers-reduced-motion: reduce) { .pp-float, .pp-fade-up { animation: none; } }
+
+/* ===== ProofPath inner-page theme ===== */
+body {
+  background:
+    radial-gradient(900px 400px at 10% -5%, rgba(16,185,129,.14), transparent 60%),
+    radial-gradient(700px 400px at 100% 0%, rgba(20,184,166,.12), transparent 60%),
+    #f5faf8;
+  background-attachment: fixed;
+}
+
+main { animation: pp-fade-up .5s ease-out both; }
+
+/* Headings */
+main h1 {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(90deg, #065f46, #0d9488);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+main h2 {
+  border-inline-start: 4px solid #10b981;
+  padding-inline-start: .6rem;
+  font-weight: 700;
+}
+main section > h2, main .rounded-xl h2 { border: 0; padding: 0; }
+
+/* Cards */
+main .rounded-xl.border.bg-white,
+main .rounded-xl.border-2.bg-white {
+  border-color: #d1fae5;
+  box-shadow: 0 1px 2px rgba(6,95,70,.06), 0 8px 24px -12px rgba(6,95,70,.18);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+main a:hover .rounded-xl.border.bg-white,
+main li.rounded-xl.border.bg-white:hover {
+  transform: translateY(-2px);
+  border-color: #6ee7b7;
+  box-shadow: 0 12px 30px -12px rgba(6,95,70,.3);
+}
+
+/* Soft info boxes */
+main .bg-emerald-50 { background: linear-gradient(135deg, #ecfdf5, #f0fdfa); border: 1px solid #d1fae5; }
+main .bg-amber-50, main .bg-amber-100 { border: 1px solid #fde68a; }
+
+/* Primary buttons */
+main button.bg-emerald-600,
+main a.bg-emerald-600 {
+  background: linear-gradient(90deg, #059669, #14b8a6);
+  box-shadow: 0 8px 20px -8px rgba(5,150,105,.6);
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+main button.bg-emerald-600:hover:not(:disabled),
+main a.bg-emerald-600:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+  box-shadow: 0 12px 26px -8px rgba(5,150,105,.7);
+}
+main button.bg-emerald-600:active:not(:disabled) { transform: translateY(0); }
+
+/* Secondary (outline) buttons */
+main button.border:not(.bg-emerald-600):not([class*="rounded-full"]) {
+  background: #fff;
+  transition: background .15s ease, border-color .15s ease;
+}
+main button.border:not(.bg-emerald-600):not([class*="rounded-full"]):hover {
+  background: #ecfdf5;
+  border-color: #6ee7b7;
+}
+
+/* Progress bars */
+main div.rounded-full.bg-emerald-600 {
+  background: linear-gradient(90deg, #10b981, #2dd4bf);
+  box-shadow: 0 0 10px rgba(16,185,129,.45);
+  transition: width .6s ease;
+}
+
+/* Inputs */
+main input, main textarea, main select { transition: border-color .15s ease, box-shadow .15s ease; }
+main input:focus, main textarea:focus, main select:focus {
+  outline: none;
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16,185,129,.2);
+}
+
+/* Language pills on the profile page */
+main button.rounded-full { transition: all .15s ease; }
+main button.rounded-full:hover { border-color: #10b981; }
+
+/* Printing the Hire profile: keep it clean */
+@media print {
+  body { background: #fff; }
+  main { animation: none; }
+  main h1 { -webkit-text-fill-color: #065f46; }
+}
