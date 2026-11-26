@@ -62,10 +62,55 @@ export const ROLES: Role[] = [
       { key: "data-entry", minTasks: 1, minLevel: 3 },
     ],
   },
+  {
+    id: "r7",
+    title: "Remote IT Support Assistant",
+    employer: "Sample role (demo): Community IT Help Desk",
+    remote: true,
+    summary: "Help users solve everyday computer and software problems.",
+    requirements: [{ key: "technology", minTasks: 2, minLevel: 1 }],
+  },
+  {
+    id: "r8",
+    title: "Junior Technical Assistant",
+    employer: "Sample role (demo): Local Builders Cooperative",
+    remote: false,
+    summary: "Do site measurements, material estimates and basic calculations.",
+    requirements: [{ key: "engineering", minTasks: 2, minLevel: 1 }],
+  },
+  {
+    id: "r9",
+    title: "Clinic Administrative Assistant",
+    employer: "Sample role (demo): Community Health Clinic Office",
+    remote: false,
+    summary: "Prepare patient files and manage appointment schedules.",
+    requirements: [{ key: "health-admin", minTasks: 2, minLevel: 1 }],
+  },
+  {
+    id: "r10",
+    title: "Remote Tutor and Learning Assistant",
+    employer: "Sample role (demo): After-School Learning Centre",
+    remote: true,
+    summary: "Explain concepts simply and prepare short lesson plans.",
+    requirements: [{ key: "education", minTasks: 2, minLevel: 1 }],
+  },
 ];
 
 // Free or free-to-audit options. Confirm the exact course page before your demo.
 export const COURSES: Record<Category, Course[]> = {
+  technology: [
+    { title: "IT support basics", provider: "Coursera (free to audit)", url: "https://www.coursera.org", cost: "Free to audit", weeks: 4 },
+    { title: "Learn to code", provider: "freeCodeCamp (free)", url: "https://www.freecodecamp.org", cost: "Free", weeks: 6 },
+  ],
+  engineering: [
+    { title: "Physics and electricity basics", provider: "Khan Academy (free)", url: "https://www.khanacademy.org", cost: "Free", weeks: 4 },
+  ],
+  "health-admin": [
+    { title: "Healthcare administration basics", provider: "Coursera (free to audit)", url: "https://www.coursera.org", cost: "Free to audit", weeks: 3 },
+  ],
+  education: [
+    { title: "Teaching and learning basics", provider: "OpenLearn (free)", url: "https://www.open.edu/openlearn", cost: "Free", weeks: 3 },
+  ],
   translation: [
     { title: "Translation and localisation basics", provider: "Coursera (free to audit)", url: "https://www.coursera.org", cost: "Free to audit", weeks: 3 },
   ],
@@ -79,6 +124,10 @@ export const COURSES: Record<Category, Course[]> = {
 };
 
 export const CATEGORY_LABEL: Record<Category, string> = {
+  technology: "technology",
+  engineering: "engineering",
+  "health-admin": "health administration",
+  education: "education",
   translation: "translation",
   "data-entry": "data entry",
   bookkeeping: "bookkeeping",
