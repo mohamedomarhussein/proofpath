@@ -1,7 +1,7 @@
 export interface Task {
   id: string;
   level: 1 | 2 | 3;
-  category: "translation" | "data-entry" | "bookkeeping";
+  category: "translation" | "data-entry" | "bookkeeping" | "customer-support" | "writing" | "technology" | "engineering" | "health-admin" | "education";
   title: string;
   instructions: string;
   source: string;

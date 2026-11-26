@@ -5,7 +5,7 @@ export interface ExtractResult {
   skills: { name: string; level: Level; evidence: string }[];
   suggestedTasks: {
     title: string;
-    category: "translation" | "data-entry" | "bookkeeping";
+    category: "translation" | "data-entry" | "bookkeeping" | "customer-support" | "writing" | "technology" | "engineering" | "health-admin" | "education";
   }[];
   mock?: boolean;
 }

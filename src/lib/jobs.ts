@@ -1,4 +1,4 @@
-export type Category = "translation" | "data-entry" | "bookkeeping";
+export type Category = "translation" | "data-entry" | "bookkeeping" | "customer-support" | "writing" | "technology" | "engineering" | "health-admin" | "education";
 
 export interface Requirement {
   key: Category;
@@ -94,10 +94,32 @@ export const ROLES: Role[] = [
     summary: "Explain concepts simply and prepare short lesson plans.",
     requirements: [{ key: "education", minTasks: 2, minLevel: 1 }],
   },
+  {
+    id: "r5",
+    title: "Remote Customer Support Agent",
+    employer: "Sample role (demo): Online Shop Support Desk",
+    remote: true,
+    summary: "Answer customer messages politely and solve order problems.",
+    requirements: [{ key: "customer-support", minTasks: 2, minLevel: 1 }],
+  },
+  {
+    id: "r6",
+    title: "Content and Copy Assistant",
+    employer: "Sample role (demo): Market Traders Group",
+    remote: true,
+    summary: "Proofread notices and write short product descriptions.",
+    requirements: [{ key: "writing", minTasks: 2, minLevel: 1 }],
+  },
 ];
 
 // Free or free-to-audit options. Confirm the exact course page before your demo.
 export const COURSES: Record<Category, Course[]> = {
+  "customer-support": [
+    { title: "Customer service fundamentals", provider: "Coursera (free to audit)", url: "https://www.coursera.org", cost: "Free to audit", weeks: 2 },
+  ],
+  writing: [
+    { title: "Grammar and clear writing", provider: "Khan Academy (free)", url: "https://www.khanacademy.org", cost: "Free", weeks: 3 },
+  ],
   technology: [
     { title: "IT support basics", provider: "Coursera (free to audit)", url: "https://www.coursera.org", cost: "Free to audit", weeks: 4 },
     { title: "Learn to code", provider: "freeCodeCamp (free)", url: "https://www.freecodecamp.org", cost: "Free", weeks: 6 },
@@ -124,6 +146,8 @@ export const COURSES: Record<Category, Course[]> = {
 };
 
 export const CATEGORY_LABEL: Record<Category, string> = {
+  "customer-support": "customer support",
+  writing: "writing",
   technology: "technology",
   engineering: "engineering",
   "health-admin": "health administration",
