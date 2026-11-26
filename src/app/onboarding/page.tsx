@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+import { TASKS } from "@/lib/tasks";
 import type { ExtractResult } from "@/lib/types";
 
 const LANGS = [
@@ -116,9 +118,19 @@ export default function Onboarding() {
           <div>
             <h2 className="mb-2 text-lg font-semibold">{t.next}</h2>
             <ul className="list-disc space-y-1 ps-5">
-              {result.suggestedTasks.map((task) => (
-                <li key={task.title}>{task.title}</li>
-              ))}
+              {result.suggestedTasks.map((task) => {
+                const match = TASKS.find((x) => x.title === task.title);
+                return (
+                  <li key={task.title}>
+                    {task.title}{" "}
+                    {match && (
+                      <Link href={`/tasks/${match.id}`} className="ms-2 text-sm font-semibold text-emerald-700 underline">
+                        Start this task →
+                      </Link>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </section>

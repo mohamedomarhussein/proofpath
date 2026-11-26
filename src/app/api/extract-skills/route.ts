@@ -14,8 +14,8 @@ const RULES: { cat: Cat; skill: string; words: string[] }[] = [
   { cat: "bookkeeping", skill: "Bookkeeping and accounting", words: ["account", "bookkeep", "ledger", "audit", "financ", "payroll"] },
   { cat: "data-entry", skill: "Data entry and spreadsheets", words: ["data entry", "excel", "spreadsheet", "typing", "records", "register"] },
   { cat: "translation", skill: "Translation and languages", words: ["translat", "interpret", "arabic", "swahili", "somali", "french", "bilingual"] },
-  { cat: "customer-support", skill: "Customer support", words: ["customer", "call cent", "sales", "shop", "client service"] },
-  { cat: "writing", skill: "Writing and content", words: ["writ", "journalis", "editor", "blog", "content", "copy"] },
+  { cat: "customer-support", skill: "Customer support", words: ["customer", "call center", "sales", "shop", "client service"] },
+  { cat: "writing", skill: "Writing and content", words: ["writing", "writer", "journalis", "editor", "blog", "copywrit"] },
 ];
 
 // Typo-tolerant matching: small edit distance against the start of each word.
