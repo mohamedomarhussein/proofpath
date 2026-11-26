@@ -1,5 +1,7 @@
 import Link from "next/link";
 import DemoButton from "@/components/DemoButton";
+import AboutSections from "@/components/AboutSections";
+import ImpactSections from "@/components/ImpactSections";
 
 const STEPS = [
   { icon: "🛠️", title: "Do real work", text: "Short, real micro-tasks in translation, data entry and bookkeeping. No certificates needed to start." },
@@ -145,6 +147,8 @@ export default function Home() {
         </div>
       </section>
 
+      <AboutSections />
+      <ImpactSections />
       {/* FINAL CTA */}
       <section className="mx-auto max-w-5xl px-6 py-16 text-center">
         <h2 className="text-3xl font-bold md:text-4xl">Skills are universal. Paperwork should not be the barrier.</h2>
